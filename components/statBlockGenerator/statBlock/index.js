@@ -13,7 +13,21 @@ const openSans = Open_Sans({
 	subsets: ['latin'],
 });
 
+function renderSpeedProperties(speed) {
+	let speedProperties = '';
+	for (let key in speed) {
+
+		if ( key === 'walk' ) {
+			speedProperties += `${speed[key]} ft.`;
+		} else {
+			speedProperties += `${key} ${speed[key]} ft.`;
+		}
+	}
+	return speedProperties;
+}
+
 export default function Statblock({statBlock}) {
+	console.log(statBlock);
 	return (
 		<div className={openSans.className}>
 			<div className={styles.statBlock}>
@@ -24,9 +38,10 @@ export default function Statblock({statBlock}) {
 				</div>
 				<TaperedRule/>
 				<div className="top-stats">
-					<PropertyLine entry="Armor Class" value={statBlock.armor_class}/>
-					<PropertyLine entry="Hit Points" value={statBlock.hit_points}/>
-					<PropertyLine entry="Speed" value={statBlock.speed}/>
+					<PropertyLine entry="Armor Class" value={`${statBlock.armor_class} (${statBlock.armor_desc})`}/>
+					<PropertyLine entry="Hit Points" value={`${statBlock.hit_points} (${statBlock.hit_dice})`} />
+					<PropertyLine entry="Speed" value={renderSpeedProperties(statBlock.speed)}/>
+					
 					<TaperedRule/>
 					<div className={styles.abilities}>
 						<PropertyLine entry="STR" value={statBlock.strength}/>
@@ -51,7 +66,7 @@ export default function Statblock({statBlock}) {
 					<div className={styles.actions}>
 						<h3>Actions</h3>
 							{ statBlock.actions.map((ability) => {
-								return <PropertyLine entry={ability.name} value={ability.description}/>
+								return <PropertyLine entry={ability.name} value={ability.desc}/>
 							}) }
 					</div>
 					: null
@@ -71,7 +86,7 @@ export default function Statblock({statBlock}) {
 					<div className={styles.actions}>
 						<h3>Special Abilities</h3>
 							{ statBlock.special_abilities.map((ability) => {
-								return <PropertyLine entry={ability.name} value={ability.description}/>
+								return <PropertyLine entry={ability.name} value={ability.desc}/>
 							}) }
 					</div>
 					: null
