@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from '../styles/Home.module.css';
-import StatblockGenerator from "../components/statblockGenerator";
+import StatBlockGenerator from "../components/statBlockGenerator";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className="py-8 px-8">
           <h1 className="text-4xl">Gamemaster AI</h1>
-          <StatblockGenerator/>
+          <StatBlockGenerator/>
         </div>
       </main>
     </div>
