@@ -1,0 +1,9 @@
+import styles from '../../styles/Statblock.module.css';
+export default function ProperyLine({entry, value}) {
+	return (
+		<div class={styles.propertyLine}>
+			<h4>{entry}</h4>
+			<p>{value}</p>
+		</div>
+	)
+};

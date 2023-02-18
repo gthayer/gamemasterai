@@ -1,0 +1,7 @@
+{
+	"functions": {
+	  "pages/api/stat-block.js": {
+		"maxDuration": 60
+	  }
+	}
+}
