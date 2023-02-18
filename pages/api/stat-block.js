@@ -108,18 +108,20 @@ function cleanResult(result) {
 
 export default async function (req, res) {
 
-    const prompt = `Create a 5e monster stat block based on the user's prompt. Return a response in a JSON object using the following structure:\
-    \
-    \`\`\`\
-    ${exampleObject}
-    \`\`\`\
-    \
-    Prompt: ${req.body.description}\
-    Stat Block: `;
+    // const prompt = `Create a 5e monster stat block based on the user's prompt. Return a response in a JSON object using the following structure:\
+    // \
+    // \`\`\`\
+    // ${exampleObject}
+    // \`\`\`\
+    // \
+    // Prompt: ${req.body.description}\
+    // Stat Block: `;
+
+    const prompt = req.body.description;
 
     try {
       const completion = await openai.createCompletion({
-        model: 'text-davinci-003',
+        model: 'curie:ft-personal-2023-02-17-03-53-50',
         prompt: prompt,
         temperature: 0,
         max_tokens: 1950

@@ -46,30 +46,37 @@ export default function Statblock({statBlock}) {
 					<PropertyLine entry="Challenge" value={statBlock.challenge_rating}/>
 				</div>
 				<TaperedRule/>
-				<div className={styles.actions}>
-					<h3>Actions</h3>
-					{ statBlock.actions ? 
-						statBlock.actions.map((ability) => {
-							return <PropertyLine entry={ability.name} value={ability.desc}/>
-						}) : null
-					}
-				</div>
-				<div className={styles.actions}>
-					<h3>Legendary Actions</h3>
-					{ statBlock.legendary_actions ? 
-						statBlock.legendary_actions.map((ability) => {
-							return <PropertyLine entry={ability.name} value={ability.desc}/>
-						}) : null
-					}
-				</div>
-				<div className={styles.actions}>
-					<h3>Special abilities</h3>
-					{ statBlock.special_abilities ? 
-						statBlock.special_abilities.map((ability) => {
-							return <PropertyLine entry={ability.name} value={ability.desc}/>
-						}) : null
-					}
-				</div>
+
+				{ statBlock.actions ? 
+					<div className={styles.actions}>
+						<h3>Actions</h3>
+							{ statBlock.actions.map((ability) => {
+								return <PropertyLine entry={ability.name} value={ability.description}/>
+							}) }
+					</div>
+					: null
+				}
+				
+				{ statBlock.legendary_actions ? 
+					<div className={styles.actions}>
+						<h3>Legendary Actions</h3>
+							{ statBlock.legendary_actions.map((ability) => {
+								return <PropertyLine entry={ability.name} value={ability.desc}/>
+							}) }
+					</div>
+					: null
+				}
+				
+				{ statBlock.special_abilities ? 
+					<div className={styles.actions}>
+						<h3>Special Abilities</h3>
+							{ statBlock.special_abilities.map((ability) => {
+								return <PropertyLine entry={ability.name} value={ability.description}/>
+							}) }
+					</div>
+					: null
+				}
+				
 				<hr className={styles.orangeBorder} />
 			</div>
 		</div>

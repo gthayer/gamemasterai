@@ -1,19 +1,9 @@
-import { Baskervville, Open_Sans } from '@next/font/google'
 import Statblock from './statBlock';
 import Textarea from '../forms/textarea';
 import Submit from '../forms/submit';
 import { useState } from 'react';
 
 const endpoint = '/api/stat-block';
-
-const baskervville = Baskervville({ 
-  weight: '400',
-  subsets: ['latin'],
-})
-
-const openSans = Open_Sans({
-	subsets: ['latin'],
-});
 
 export default function StatBlockGenerator({monster}) {
 
@@ -48,6 +38,8 @@ export default function StatBlockGenerator({monster}) {
 					/>
 					<Submit/>
 				</form>
+
+				{ console.log(Object.keys(statBlock)) }
 			</>
 			<>
 				<Statblock statBlock={statBlock}/>
