@@ -6,7 +6,7 @@ import Select from '../forms/select';
 import { useState } from 'react';
 
 const endpoint = '/api/stat-block';
-const debug = true;
+const debug = false;
 
 const modelOptions = [
 	{ value: 'goblin', label: 'Goblin' },
