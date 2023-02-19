@@ -1,4 +1,4 @@
-export default function Textarea({label, name, placeholder, value, onChange}) {
+export default function Textarea({name, placeholder, value, onChange}) {
 	return (
 		<div className="mb-6">
 			<textarea
