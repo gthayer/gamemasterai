@@ -9,8 +9,11 @@ export default function StatBlockGenerator({monster}) {
 
 	const [descriptionInput, setDescriptionInput] = useState("");
 	const [statBlock, setStatBlock] = useState({});
+	const [isLoading, setIsLoading] = useState(false);
+
 	async function onSubmit(event) {
 		event.preventDefault();
+		setIsLoading(true);
 		const response = await fetch(endpoint, {
 			method: "POST",
 			headers: {
@@ -20,6 +23,7 @@ export default function StatBlockGenerator({monster}) {
 		});
 		const data = await response.json();
 		setStatBlock(data);
+		setIsLoading(false);
 	}
 
 	return (
@@ -38,11 +42,9 @@ export default function StatBlockGenerator({monster}) {
 					/>
 					<Submit/>
 				</form>
-
-				{ console.log(Object.keys(statBlock)) }
 			</>
 			<>
-				<Statblock statBlock={statBlock}/>
+				<Statblock statBlock={statBlock} isLoading={isLoading}/>
 			</>
 		</div>
 	);

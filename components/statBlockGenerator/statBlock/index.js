@@ -1,8 +1,10 @@
+import React, { useState, useEffect } from "react";
 import styles from './Statblock.module.css';
 import { Baskervville, Open_Sans } from '@next/font/google'
 
 import TaperedRule from './taperedRule';
 import PropertyLine from './propertyLine';
+import Timer from "./timer";
 
 const baskervville = Baskervville({ 
   weight: '400',
@@ -53,7 +55,7 @@ function statBonus(stat) {
 	)
 }
 
-export default function Statblock({statBlock}) {
+export default function Statblock({statBlock, isLoading}) {
 	console.log(statBlock);
 
 	// Saving throws are a special case, so we'll render them separately.
@@ -63,76 +65,84 @@ export default function Statblock({statBlock}) {
 		<div className={openSans.className}>
 			<div className={styles.statBlock}>
 				<hr className={styles.orangeBorder} />
-				<div className={styles.creatureHeading}>
-					<h1 className={baskervville.className}>{statBlock.name}</h1>
-					<h2>{statBlock.size} {statBlock.type}, {statBlock.alignment}</h2>
-				</div>
 
-				<TaperedRule/>
 
-				<div className="top-stats">
-					<PropertyLine entry="Armor Class" value={`${statBlock.armor_class} (${statBlock.armor_desc})`}/>
-					<PropertyLine entry="Hit Points" value={`${statBlock.hit_points} (${statBlock.hit_dice})`} />
-					<PropertyLine entry="Speed" value={renderSpeedProperties(statBlock.speed)}/>
-					
-					<TaperedRule/>
-
-					<div className={styles.abilities}>
-						<PropertyLine entry="STR" value={`${statBlock.strength} ${statBonus(statBlock.strength)}`}/>
-						<PropertyLine entry="DEX" value={`${statBlock.dexterity} ${statBonus(statBlock.dexterity)}`}/>
-						<PropertyLine entry="CON" value={`${statBlock.constitution} ${statBonus(statBlock.constitution)}`}/>
-						<PropertyLine entry="INT" value={`${statBlock.intelligence} ${statBonus(statBlock.intelligence)}`}/>
-						<PropertyLine entry="WIS" value={`${statBlock.wisdom} ${statBonus(statBlock.wisdom)}`}/>
-						<PropertyLine entry="CHA" value={`${statBlock.charisma} ${statBonus(statBlock.charisma)}`}/>
+				{!isLoading ? (
+				<>
+					<div className={styles.creatureHeading}>
+						<h1 className={baskervville.className}>{statBlock.name}</h1>
+						<h2>{statBlock.size} {statBlock.type}, {statBlock.alignment}</h2>
 					</div>
 
 					<TaperedRule/>
 
-					{ savingThrows ? <PropertyLine entry="Saving Throws" value={savingThrows}/> : null }
+					<div className="top-stats">
+						<PropertyLine entry="Armor Class" value={`${statBlock.armor_class} (${statBlock.armor_desc})`}/>
+						<PropertyLine entry="Hit Points" value={`${statBlock.hit_points} (${statBlock.hit_dice})`} />
+						<PropertyLine entry="Speed" value={renderSpeedProperties(statBlock.speed)}/>
+						
+						<TaperedRule/>
+
+						<div className={styles.abilities}>
+							<PropertyLine entry="STR" value={`${statBlock.strength} ${statBonus(statBlock.strength)}`}/>
+							<PropertyLine entry="DEX" value={`${statBlock.dexterity} ${statBonus(statBlock.dexterity)}`}/>
+							<PropertyLine entry="CON" value={`${statBlock.constitution} ${statBonus(statBlock.constitution)}`}/>
+							<PropertyLine entry="INT" value={`${statBlock.intelligence} ${statBonus(statBlock.intelligence)}`}/>
+							<PropertyLine entry="WIS" value={`${statBlock.wisdom} ${statBonus(statBlock.wisdom)}`}/>
+							<PropertyLine entry="CHA" value={`${statBlock.charisma} ${statBonus(statBlock.charisma)}`}/>
+						</div>
+
+						<TaperedRule/>
+
+						{ savingThrows ? <PropertyLine entry="Saving Throws" value={savingThrows}/> : null }
 
 
-					{ statBlock.damage_immunities ? <PropertyLine entry="Damage Immunities" value={statBlock.damage_immunities}/> : null }
-					{ statBlock.damage_vulnerabilities ? <PropertyLine entry="Damage Vulnerabilities" value={statBlock.damage_vulnerabilities}/> : null }
-					{ statBlock.damage_resistances ? <PropertyLine entry="Damage Resistances" value={statBlock.damage_resistances}/> : null }	
-					{ statBlock.condition_immunities ? <PropertyLine entry="Condition Immunities" value={statBlock.condition_immunities}/> : null }
-					{ statBlock.senses ? <PropertyLine entry="Senses" value={statBlock.senses}/> : null }
-					{ statBlock.languages ? <PropertyLine entry="Languages" value={statBlock.languages}/> : null }
-					{ statBlock.skills ? <PropertyLine entry="Skills" value={`${renderSkillProperties(statBlock.skills)}`}/> : null }
-					{ statBlock.challenge_rating ? <PropertyLine entry="Challenge" value={statBlock.challenge_rating}/> : null }
+						{ statBlock.damage_immunities ? <PropertyLine entry="Damage Immunities" value={statBlock.damage_immunities}/> : null }
+						{ statBlock.damage_vulnerabilities ? <PropertyLine entry="Damage Vulnerabilities" value={statBlock.damage_vulnerabilities}/> : null }
+						{ statBlock.damage_resistances ? <PropertyLine entry="Damage Resistances" value={statBlock.damage_resistances}/> : null }	
+						{ statBlock.condition_immunities ? <PropertyLine entry="Condition Immunities" value={statBlock.condition_immunities}/> : null }
+						{ statBlock.senses ? <PropertyLine entry="Senses" value={statBlock.senses}/> : null }
+						{ statBlock.languages ? <PropertyLine entry="Languages" value={statBlock.languages}/> : null }
+						{ statBlock.skills ? <PropertyLine entry="Skills" value={`${renderSkillProperties(statBlock.skills)}`}/> : null }
+						{ statBlock.challenge_rating ? <PropertyLine entry="Challenge" value={statBlock.challenge_rating}/> : null }
+						
+				
+					</div>
+					<TaperedRule/>
+
+					{ statBlock.actions ? 
+						<div className={styles.actions}>
+							<h3>Actions</h3>
+								{ statBlock.actions.map((ability) => {
+									return <PropertyLine entry={ability.name} value={ability.desc}/>
+								}) }
+						</div>
+						: null
+					}
 					
-			
-				</div>
-				<TaperedRule/>
-
-				{ statBlock.actions ? 
-					<div className={styles.actions}>
-						<h3>Actions</h3>
-							{ statBlock.actions.map((ability) => {
-								return <PropertyLine entry={ability.name} value={ability.desc}/>
-							}) }
-					</div>
-					: null
-				}
-				
-				{ statBlock.legendary_actions ? 
-					<div className={styles.actions}>
-						<h3>Legendary Actions</h3>
-							{ statBlock.legendary_actions.map((ability) => {
-								return <PropertyLine entry={ability.name} value={ability.desc}/>
-							}) }
-					</div>
-					: null
-				}
-				
-				{ statBlock.special_abilities ? 
-					<div className={styles.actions}>
-						<h3>Special Abilities</h3>
-							{ statBlock.special_abilities.map((ability) => {
-								return <PropertyLine entry={ability.name} value={ability.desc}/>
-							}) }
-					</div>
-					: null
-				}
+					{ statBlock.legendary_actions ? 
+						<div className={styles.actions}>
+							<h3>Legendary Actions</h3>
+								{ statBlock.legendary_actions.map((ability) => {
+									return <PropertyLine entry={ability.name} value={ability.desc}/>
+								}) }
+						</div>
+						: null
+					}
+					
+					{ statBlock.special_abilities ? 
+						<div className={styles.actions}>
+							<h3>Special Abilities</h3>
+								{ statBlock.special_abilities.map((ability) => {
+									return <PropertyLine entry={ability.name} value={ability.desc}/>
+								}) }
+						</div>
+						: null
+					}
+				</>
+				) : (
+					<Timer/>
+				)}
 				
 				<hr className={styles.orangeBorder} />
 			</div>
