@@ -10,7 +10,6 @@ const debug = false;
 
 const modelOptions = [
 	{ value: 'goblin', label: 'Goblin' },
-	{ value: 'kobold', label: 'Kobold' },
 	{ value: 'skeleton', label: 'Skeleton' },
 ]
 
@@ -43,39 +42,48 @@ export default function StatBlockGenerator({monster}) {
 	}
 
 	return (
-		<div className="columns-2">
-			<>
-				<form 
-					className=""
-					onSubmit={onSubmit}
-					>
-					<Textarea
-						label="describe your creature"
-						name="description-input"
-						placeholder="Describe your creature"
-						value={descriptionInput}
-						onChange={(e) => setDescriptionInput(e.target.value)}
-					/>
-					<Select 
-						options={modelOptions}
-						onChange={(e) => {setSelectedModel(e.target.value)} }
-					/>
-					<Submit/>
-				</form>
-			</>
-			<>
-				{ currentModel === 'goblin' ? (
-					<StatblockJson 
-						statBlock={statBlock}
-						isLoading={isLoading}
-					/>
-				) : (
-					<StatblockMarkdown 
-						statBlock={statBlock}
-						isLoading={isLoading}
-					/>
-				)}
-			</>
-		</div>
+		<>
+			<div className="columns-2">
+				<>
+					<form 
+						className=""
+						onSubmit={onSubmit}
+						>
+						<Textarea
+							label="describe your creature"
+							name="description-input"
+							placeholder="Describe your creature"
+							value={descriptionInput}
+							onChange={(e) => setDescriptionInput(e.target.value)}
+						/>
+						<Select 
+							options={modelOptions}
+							onChange={(e) => {setSelectedModel(e.target.value)} }
+						/>
+						<Submit/>
+					</form>
+					<div>
+					<p>What's the difference between the different models?</p>
+						<ul className="list-desc">
+							<li>Goblin is an AI model trained on the SRD, and returns a structured JSON format.</li>
+							<li>Skeleton is an untrained request, and returns responses in markdown. Responses can be "more creative", but are less structured and may miss key details.</li>
+						</ul>
+					</div>
+				</>
+				<>
+					{ currentModel === 'goblin' ? (
+						<StatblockJson 
+							statBlock={statBlock}
+							isLoading={isLoading}
+						/>
+					) : (
+						<StatblockMarkdown 
+							statBlock={statBlock}
+							isLoading={isLoading}
+						/>
+					)}
+				</>
+			</div>
+		</>
 	);
 };
