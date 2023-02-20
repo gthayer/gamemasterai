@@ -1,5 +1,5 @@
 import StatblockJson from './statBlockJson';
-import StatblockMarkdown from './StatblockMarkdown';
+import StatBlockMarkdown from './StatBlockMarkdown';
 import Textarea from '../forms/textarea';
 import Submit from '../forms/submit';
 import Select from '../forms/select';
@@ -77,7 +77,7 @@ export default function StatBlockGenerator({monster}) {
 							isLoading={isLoading}
 						/>
 					) : (
-						<StatblockMarkdown 
+						<StatBlockMarkdown 
 							statBlock={statBlock}
 							isLoading={isLoading}
 						/>
