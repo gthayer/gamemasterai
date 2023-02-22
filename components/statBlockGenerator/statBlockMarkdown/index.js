@@ -1,4 +1,4 @@
-import styles from '../Statblock.module.css';
+import styles from './Statblock.module.css';
 import { Baskervville, Open_Sans } from '@next/font/google'
 import Timer from "../timer";
 import ReactMarkdown from 'react-markdown';

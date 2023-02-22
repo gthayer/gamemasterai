@@ -9,8 +9,8 @@ const endpoint = '/api/stat-block';
 const debug = false;
 
 const modelOptions = [
-	{ value: 'goblin', label: 'Goblin' },
 	{ value: 'skeleton', label: 'Skeleton' },
+	{ value: 'goblin', label: 'Goblin' },
 ]
 
 export default function StatBlockGenerator({monster}) {
@@ -18,8 +18,8 @@ export default function StatBlockGenerator({monster}) {
 	const [descriptionInput, setDescriptionInput] = useState("");
 	const [statBlock, setStatBlock] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
-	const [selectedModel, setSelectedModel] = useState('goblin');
-	const [currentModel, setCurrentModel] = useState('goblin');
+	const [selectedModel, setSelectedModel] = useState('skeleton');
+	const [currentModel, setCurrentModel] = useState('skeleton');
 
 	async function onSubmit(event) {
 		event.preventDefault();

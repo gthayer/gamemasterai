@@ -95,7 +95,6 @@ export default function Statblock({statBlock, isLoading}) {
 
 						{ savingThrows ? <PropertyLine entry="Saving Throws" value={savingThrows}/> : null }
 
-
 						{ statBlock.damage_immunities ? <PropertyLine entry="Damage Immunities" value={statBlock.damage_immunities}/> : null }
 						{ statBlock.damage_vulnerabilities ? <PropertyLine entry="Damage Vulnerabilities" value={statBlock.damage_vulnerabilities}/> : null }
 						{ statBlock.damage_resistances ? <PropertyLine entry="Damage Resistances" value={statBlock.damage_resistances}/> : null }	
