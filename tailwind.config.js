@@ -5,7 +5,14 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    container: {
+      center: true,
+      width: '50px',
+    },
+    colors: {
+      orange: '#E69A28',
+      tan: `#FDF1DC`,
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),

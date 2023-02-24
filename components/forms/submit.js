@@ -1,9 +1,16 @@
-export default function Submit() {
+export default function Submit({value = "Submit", disabled = true}) {
+	let className = "bg-orange font-bold block w-5/12 align-center mt-2 py-2 px-4 focus:outline-none focus:shadow-outline";
+
+	if (disabled) {
+		className += " opacity-50 cursor-not-allowed";
+	}
+
 	return (
 		<input
-			className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" 
+			className={className} 
 			type="submit" 
-			value="Submit"
+			value={value}
+			disabled={disabled}
 		/>
 	);
 };

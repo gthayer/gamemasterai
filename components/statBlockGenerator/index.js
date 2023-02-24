@@ -1,12 +1,18 @@
-import StatBlockJson from './statBlockJson';
-import StatBlockMarkdown from './statBlockMarkdown';
+import StatBlockJson from './statBlocks/statBlockJson';
+import StatBlockMarkdown from './statBlocks/statBlockMarkdown';
+import Placeholder from './statBlockPlaceholder';
 import Textarea from '../forms/textarea';
+import Counter from '../forms/counter';
 import Submit from '../forms/submit';
 import Select from '../forms/select';
 import { useState } from 'react';
 
+import styles from './StatBlockGenerator.module.css';
+
 const endpoint = '/api/stat-block';
 const debug = false;
+
+const maxDescriptionLength = 300;
 
 const modelOptions = [
 	{ value: 'skeleton', label: 'Skeleton' },
@@ -16,7 +22,7 @@ const modelOptions = [
 export default function StatBlockGenerator({monster}) {
 
 	const [descriptionInput, setDescriptionInput] = useState("");
-	const [statBlock, setStatBlock] = useState({});
+	const [statBlock, setStatBlock] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedModel, setSelectedModel] = useState('skeleton');
 	const [currentModel, setCurrentModel] = useState('skeleton');
@@ -41,49 +47,64 @@ export default function StatBlockGenerator({monster}) {
 		setIsLoading(false);
 	}
 
+	function isDisabled() {
+		if (descriptionInput.length > 3 && !isLoading) {
+			return false;
+		}
+		return true;
+	}
+
 	return (
-		<>
-			<div className="columns-2">
-				<>
+		<div className={styles.statBlockGenerator}>
+			<div className="flex flex-row w-10/12 m-auto">
+				<div className="basis-1/3 align-middle">
 					<form 
-						className=""
 						onSubmit={onSubmit}
 						>
 						<Textarea
 							label="describe your creature"
 							name="description-input"
+							maxLength={maxDescriptionLength}
 							placeholder="Describe your creature"
 							value={descriptionInput}
 							onChange={(e) => setDescriptionInput(e.target.value)}
 						/>
+						{/* 
+						// Removing model selects until we have a better fine tuned model to work from.
 						<Select 
 							options={modelOptions}
 							onChange={(e) => {setSelectedModel(e.target.value)} }
-						/>
-						<Submit/>
+						/> 
+						*/}
+						<div className="flex flex-row">
+							<Submit className="basis-1/2" value="Conjure" disabled={isDisabled()}/>
+							<Counter className="basis-1/2 text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
+						</div>
 					</form>
-					<div>
-					<p>What's the difference between the different models?</p>
-						<ul className="list-desc">
-							<li>Goblin is an AI model trained on the SRD, and returns a structured JSON format.</li>
-							<li>Skeleton is an untrained request, and returns responses in markdown. Responses can be "more creative", but are less structured and may miss key details.</li>
-						</ul>
-					</div>
-				</>
-				<>
-					{ currentModel === 'goblin' ? (
-						<StatBlockJson 
-							statBlock={statBlock}
-							isLoading={isLoading}
-						/>
+				</div>
+				<div className="basis-2/3">
+					{console.log(styles.orangeBorder)}
+				<hr className={styles.orangeBorder} />
+					{ statBlock || isLoading ? (
+						<div>
+							{ currentModel === 'goblin' ? (
+								<StatBlockJson 
+									statBlock={statBlock}
+									isLoading={isLoading}
+								/>
+							) : (
+								<StatBlockMarkdown 
+									statBlock={statBlock}
+									isLoading={isLoading}
+								/>
+							)}
+						</div>
 					) : (
-						<StatBlockMarkdown 
-							statBlock={statBlock}
-							isLoading={isLoading}
-						/>
-					)}
-				</>
+						<Placeholder/>
+					) }
+				<hr className={styles.orangeBorder} />
+				</div>
 			</div>
-		</>
+		</div>
 	);
 };

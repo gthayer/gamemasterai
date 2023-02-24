@@ -1,0 +1,29 @@
+.statBlockPlaceholder p {
+	color: transparent;
+	text-shadow: 0 0 8px #000;
+}
+
+.statBlockPlaceholder h1,
+.statBlockPlaceholder h2,
+.statBlockPlaceholder h3,
+.statBlockPlaceholder h4,
+.statBlockPlaceholder table {
+	color: transparent;
+	text-shadow: 0 0 8px #7A200D;
+}
+
+.statBlockGenerator .orangeBorder{
+	display: block;
+	background: #E69A28;
+	border: 1px solid #000;
+	border-left: 0px;
+	border-right: 0px;
+	height: 5px;
+	padding: 0;
+	margin: 0 20px;
+	box-sizing: initial;
+}
+
+.statBlockGenerator .orange-border.bottom{
+	margin: 15px -10px -20px;
+}

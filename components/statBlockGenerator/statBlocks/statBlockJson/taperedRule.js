@@ -1,4 +1,4 @@
-import styles from './Statblock.module.css';
+import styles from '../Statblock.module.css';
 export default function TaperedRule() {
 	return (
 		<div className={styles.taperedRule}>

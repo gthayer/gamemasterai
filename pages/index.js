@@ -4,17 +4,18 @@ import StatBlockGenerator from "../components/statBlockGenerator";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Gamemaster AI</title>
       </Head>
 
       <main className={styles.main}>
-        <div className="py-8 px-8">
-          <h1 className="text-4xl">Gamemaster AI</h1>
+        <div className="monsterSummoner py-8 px-8 container">
+          <h1 className="text-4xl text-center py-4 text-tan">5e Monster Summoner</h1>
+          <p className="text-center py-4 text-tan">Call upon the eldrich black magic of Artifical Intellegence and summon from the shadows a creature of your darkest desires, birthed from the void, into existance.</p>
           <StatBlockGenerator/>
         </div>
       </main>
-    </div>
+    </>
   );
 }

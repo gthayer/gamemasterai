@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styles from './Statblock.module.css';
 
 function Timer() {
   const [seconds, setSeconds] = useState(0);
@@ -13,10 +12,10 @@ function Timer() {
   }, []);
 
   return (
-	<div className={styles.creatureHeading}>
-		<h1>Loading...</h1>
-		<h2>This can take up to a minute. {seconds}s</h2>
-	</div>
+    <>
+      <h1>Loading...</h1>
+      <h2>This can take up to a minute. {seconds}s</h2>
+    </>
   );
 }
 

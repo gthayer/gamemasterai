@@ -1,18 +1,8 @@
 import styles from '../Statblock.module.css';
-import { Baskervville, Open_Sans } from '@next/font/google'
 
-import TaperedRule from '../taperedRule';
-import Timer from "../timer";
+import TaperedRule from './taperedRule';
+import Timer from "../../timer";
 import PropertyLine from './propertyLine';
-
-const baskervville = Baskervville({ 
-  weight: '400',
-  subsets: ['latin'],
-})
-
-const openSans = Open_Sans({
-	subsets: ['latin'],
-});
 
 function renderSpeedProperties(speed) {
 	let speedProperties = '';

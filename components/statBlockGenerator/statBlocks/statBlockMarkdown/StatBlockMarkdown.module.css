@@ -1,0 +1,12 @@
+.statBlockMarkdown h3{
+	clear: left;
+}
+.statBlockMarkdown h4{
+	clear: left;
+}
+
+.statBlockMarkdown h4,
+.statBlockMarkdown p {
+	display: block;
+	float: left;
+}
