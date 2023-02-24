@@ -1,4 +1,4 @@
-import styles from '../Statblock.module.css';
+import styles from '../StatBlock.module.css';
 
 import TaperedRule from './taperedRule';
 import Timer from "../../timer";
