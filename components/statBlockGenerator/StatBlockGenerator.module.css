@@ -10,6 +10,12 @@
 .statBlockPlaceholder table {
 	color: transparent;
 	text-shadow: 0 0 8px #7A200D;
+	border: none;
+}
+
+.statBlockPlaceholder hr {
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
 }
 
 .statBlockGenerator .orangeBorder{
