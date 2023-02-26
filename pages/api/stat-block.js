@@ -113,7 +113,8 @@ export default async function (req, res) {
     }
 
     console.log('// createStatBlock');
-    createStatBlock(req.body.description, result);
+    const resp = await createStatBlock(req.body.description, result);
+    console.log(resp);
 
     res.status(200).json(result);
 }
