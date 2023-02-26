@@ -1,6 +1,6 @@
 import {goblinRequest} from '../../lib/modelRequests/goblin';
 import {skeletonRequest} from '../../lib/modelRequests/skeleton';
-import {createStatBlock} from '../../lib/database/StatBlock';
+import {createStatBlock} from '../../lib/database/statBlock';
 
 const exampleObject = {
   "slug": "",
