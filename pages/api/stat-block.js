@@ -1,5 +1,6 @@
 import {goblinRequest} from '../../lib/modelRequests/goblin';
 import {skeletonRequest} from '../../lib/modelRequests/skeleton';
+import {createStatBlock} from '../../lib/database/StatBlock';
 
 const exampleObject = {
   "slug": "",
@@ -97,6 +98,7 @@ const exampleObject = {
 };
 
 export default async function (req, res) {
+  
     let result = null;
 
     switch (req.body.model) {
@@ -109,6 +111,8 @@ export default async function (req, res) {
             result = await goblinRequest(req.body.description, req.body.debug);
             break;
     }
+
+    createStatBlock(req.body.description, result);
 
     res.status(200).json(result);
 }

@@ -83,7 +83,6 @@ export default function StatBlockGenerator({monster}) {
 					</form>
 				</div>
 				<div className="basis-2/3">
-					{console.log(styles.orangeBorder)}
 				<hr className={styles.orangeBorder} />
 					{ statBlock || isLoading ? (
 						<div>

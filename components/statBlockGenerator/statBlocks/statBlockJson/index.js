@@ -45,7 +45,6 @@ function statBonus(stat) {
 }
 
 export default function Statblock({statBlock, isLoading}) {
-	console.log(statBlock);
 
 	// Saving throws are a special case, so we'll render them separately.
 	const savingThrows = renderSavingThrows(statBlock);
