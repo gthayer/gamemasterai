@@ -112,7 +112,7 @@ export default async function (req, res) {
             break;
     }
 
-    createStatBlock(req.body.description, result);
+    //createStatBlock(req.body.description, result);
 
     res.status(200).json(result);
 }
