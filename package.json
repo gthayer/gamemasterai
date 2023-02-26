@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "bash ./deploy_scripts/deploy.sh",
     "start": "next start"
   },
   "dependencies": {
