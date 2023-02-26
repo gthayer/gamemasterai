@@ -112,6 +112,7 @@ export default async function (req, res) {
             break;
     }
 
+    console.log('// createStatBlock');
     createStatBlock(req.body.description, result);
 
     res.status(200).json(result);
