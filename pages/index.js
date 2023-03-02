@@ -1,14 +1,16 @@
 import Head from "next/head";
 import styles from '../styles/Home.module.css';
 import StatBlockGenerator from "../components/statBlockGenerator";
-import { useSession, signIn, signOut } from "next-auth/react"
+import Header from "../components/header";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Gamemaster AI</title>
+        <title>GamemasterAI - 5e Monster Summoner</title>
       </Head>
+
+      <Header/>
 
       <main className={styles.main}>
         <div className="monsterSummoner py-8 px-8 container">

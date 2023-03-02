@@ -10,6 +10,7 @@ module.exports = {
       width: '50px',
     },
     colors: {
+      black: `#000000`,
       orange: '#E69A28',
       tan: `#FDF1DC`,
     }
