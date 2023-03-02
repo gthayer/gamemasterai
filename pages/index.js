@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styles from '../styles/Home.module.css';
 import StatBlockGenerator from "../components/statBlockGenerator";
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Home() {
   return (

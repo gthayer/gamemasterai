@@ -5,6 +5,7 @@ import Textarea from '../forms/textarea';
 import Counter from '../forms/counter';
 import Submit from '../forms/submit';
 import Select from '../forms/select';
+import Login from '../auth/login';
 import { useState } from 'react';
 
 import styles from './StatBlockGenerator.module.css';
@@ -53,11 +54,12 @@ export default function StatBlockGenerator({monster}) {
 		}
 		return true;
 	}
-
 	return (
 		<div className={styles.statBlockGenerator}>
+			<Login/>
 			<div className="flex flex-row w-10/12 m-auto">
 				<div className="basis-1/3 align-middle">
+					<Login/>
 					<form 
 						onSubmit={onSubmit}
 						>
