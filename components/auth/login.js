@@ -1,15 +1,11 @@
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn } from "next-auth/react"
 
 export default function Login() {
-  const { data: session } = useSession()
-  if(session) {
-    return <>
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
-    </>
-  }
-  return <>
-    Not signed in <br/>
-    <button onClick={() => signIn()}>Sign in</button>
-  </>
+	const { data: session } = useSession();
+
+	let className = "bg-orange font-bold block w-5/12 align-center mt-2 py-2 px-4 focus:outline-none focus:shadow-outline";
+
+	return (
+		<button onClick={signIn} className={className}>Sign In</button>
+	)
 }

@@ -3,9 +3,14 @@ import FacebookProvider from 'next-auth/providers/facebook'
 import GoogleProvider from 'next-auth/providers/google'
 import GitHubProvider from 'next-auth/providers/github'
 import RedditProvider from 'next-auth/providers/reddit'
+import PatreonProvider from 'next-auth/providers/patreon'
 
 export default NextAuth({
   providers: [
+    PatreonProvider({
+      clientId: process.env.PATREON_ID,
+      clientSecret: process.env.PATREON_SECRET,
+    }),
     FacebookProvider({
       clientId: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET

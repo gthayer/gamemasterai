@@ -5,7 +5,9 @@ import Textarea from '../forms/textarea';
 import Counter from '../forms/counter';
 import Submit from '../forms/submit';
 import Select from '../forms/select';
+import Login from '../auth/login';
 import { useState } from 'react';
+import { useSession } from "next-auth/react"
 
 import styles from './StatBlockGenerator.module.css';
 
@@ -26,6 +28,7 @@ export default function StatBlockGenerator({monster}) {
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedModel, setSelectedModel] = useState('skeleton');
 	const [currentModel, setCurrentModel] = useState('skeleton');
+	const { data: session } = useSession()
 
 	async function onSubmit(event) {
 		event.preventDefault();
@@ -57,29 +60,36 @@ export default function StatBlockGenerator({monster}) {
 		<div className={styles.statBlockGenerator}>
 			<div className="flex flex-row w-10/12 m-auto">
 				<div className="basis-1/3 align-middle">
-					<form 
-						onSubmit={onSubmit}
-						>
-						<Textarea
-							label="describe your creature"
-							name="description-input"
-							maxLength={maxDescriptionLength}
-							placeholder="Describe your creature"
-							value={descriptionInput}
-							onChange={(e) => setDescriptionInput(e.target.value)}
-						/>
-						{/* 
-						// Removing model selects until we have a better fine tuned model to work from.
-						<Select 
-							options={modelOptions}
-							onChange={(e) => {setSelectedModel(e.target.value)} }
-						/> 
-						*/}
-						<div className="flex flex-row">
-							<Submit className="basis-1/2" value="Conjure" disabled={isDisabled()}/>
-							<Counter className="basis-1/2 text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
-						</div>
-					</form>
+
+					{ ! session ? 
+						(
+							<Login />
+						) : (
+							<form 
+								onSubmit={onSubmit}
+								>
+								<Textarea
+									label="describe your creature"
+									name="description-input"
+									maxLength={maxDescriptionLength}
+									placeholder="Describe your creature"
+									value={descriptionInput}
+									onChange={(e) => setDescriptionInput(e.target.value)}
+								/>
+								{/* 
+								// Removing model selects until we have a better fine tuned model to work from.
+								<Select 
+									options={modelOptions}
+									onChange={(e) => {setSelectedModel(e.target.value)} }
+								/> 
+								*/}
+								<div className="flex flex-row">
+									<Submit className="basis-1/2" value="Conjure" disabled={isDisabled()}/>
+									<Counter className="basis-1/2 text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
+								</div>
+							</form>
+						)
+					}
 				</div>
 				<div className="basis-2/3">
 				<hr className={styles.orangeBorder} />
