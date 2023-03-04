@@ -1,9 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Header() {
-	const { data: session } = useSession();
-
-	const callbackUrl = 'https://example.com/my-custom-callback-url';
+	const { data: session } = useSession()
 
 	return (
 		<header className="fixed top-0 w-full bg-black text-tan flex flex-row">
@@ -20,7 +18,7 @@ export default function Header() {
 						Sign Out
 					</span>
 				: 
-					<span onClick={() => signIn({ callbackUrl })}>
+					<span onClick={() => signIn()}>
 						Sign In
 					</span>
 				}
