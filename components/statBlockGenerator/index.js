@@ -58,7 +58,7 @@ export default function StatBlockGenerator({monster}) {
 	}
 	return (
 		<div className={styles.statBlockGenerator}>
-			<div className="flex flex-row w-10/12 m-auto">
+			<div className="flex flex-row m-auto">
 				<div className="basis-1/3 align-middle">
 
 					{ ! session ? 
