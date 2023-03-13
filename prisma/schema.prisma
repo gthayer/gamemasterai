@@ -4,20 +4,33 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url= env("DATABASE_URL")
 }
 
-model StatBlocks {
-  ID       Int     @id @default(autoincrement())
-  prompt   String? @db.VarChar(300)
-  statBlock String? @db.VarChar(8000)
-  model String?
-  user Int 
-  rating String
+model User {
+  ID           Int    @id @default(autoincrement())
+  authPlatform String
+  createdAt    DateTime @default(now())
+  statBlocks   StatBlock[]
+  Transactions Transaction[]
 }
 
-model Users {
-  ID    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model StatBlock {
+  ID           Int           @id @default(autoincrement())
+  prompt       String?       @db.VarChar(300)
+  statBlock    String?       @db.VarChar(8000)
+  createdAt    DateTime      @default(now())
+  rating       String
+  model        String
+  user         User          @relation(fields: [userID], references: [ID])
+  userID       Int
+}
+
+model Transaction {
+  ID             Int           @id @default(autoincrement())
+  transactionID  String
+  amount         Decimal       @db.Decimal(9,2)
+  createdAt      DateTime      @default(now())
+  userID         Int
+  user           User @relation(fields: [userID], references: [ID])
 }
