@@ -8,11 +8,12 @@ datasource db {
 }
 
 model User {
-  ID           Int    @id @default(autoincrement())
-  authPlatform String
-  createdAt    DateTime @default(now())
-  statBlocks   StatBlock[]
-  Transactions Transaction[]
+  ID             Int    @id @default(autoincrement())
+  authPlatform   String
+  authPlatformID String
+  createdAt      DateTime @default(now())
+  statBlocks     StatBlock[]
+  Transactions   Transaction[]
 }
 
 model StatBlock {
