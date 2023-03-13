@@ -42,10 +42,11 @@ export default function StatBlockGenerator({monster}) {
 				description: descriptionInput,
 				model: selectedModel,
 				debug: debug,
+				userId: session ? session.user.id : '0'
 			}),
 		});
-		const data = await response.json();
-		setStatBlock(data);
+		const resp = await response.json();
+		setStatBlock(resp);
 		setCurrentModel(selectedModel);
 		setIsLoading(false);
 	}
@@ -56,6 +57,7 @@ export default function StatBlockGenerator({monster}) {
 		}
 		return true;
 	}
+
 	return (
 		<div className={styles.statBlockGenerator}>
 			<div className="flex flex-row m-auto">

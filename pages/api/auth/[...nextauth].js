@@ -1,20 +1,12 @@
 import NextAuth from 'next-auth'
-import FacebookProvider from 'next-auth/providers/facebook'
-// import GoogleProvider from 'next-auth/providers/google'
 import RedditProvider from 'next-auth/providers/reddit'
 import GitHubProvider from 'next-auth/providers/github'
-
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import prismadb from '../../../lib/database/prismadb'
 
 export default NextAuth({
+  adapter: PrismaAdapter(prismadb),
   providers: [
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_ID,
-    //   clientSecret: process.env.GOOGLE_SECRET
-    // }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_ID,
-      clientSecret: process.env.FACEBOOK_SECRET
-    }),
     RedditProvider({
       clientId: process.env.REDDIT_CLIENT_ID,
       clientSecret: process.env.REDDIT_CLIENT_SECRET
@@ -23,5 +15,11 @@ export default NextAuth({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET
     })
-  ]
+  ],
+  callbacks: {
+    session: async ({ session, user }) => {
+      session.user.id = user.id
+      return session
+    }
+  }
 })
