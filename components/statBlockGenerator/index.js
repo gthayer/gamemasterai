@@ -50,6 +50,13 @@ export default function StatBlockGenerator({monster}) {
 		setCurrentModel(selectedModel);
 		setIsLoading(false);
 	}
+	
+	const handleKeyDown = (event) => {
+		if (event.keyCode === 13 && !event.shiftKey) {
+			event.preventDefault();
+			onSubmit(event);
+		}
+	}
 
 	function isDisabled() {
 		if (descriptionInput.length > 3 && !isLoading) {
@@ -70,6 +77,8 @@ export default function StatBlockGenerator({monster}) {
 							<form 
 								className="my-4 md:m-0"
 								onSubmit={onSubmit}
+								action=""
+								onKeyDown={handleKeyDown}
 								>
 								<div className="md:hidden">
 									<Counter className="text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
