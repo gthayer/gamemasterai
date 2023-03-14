@@ -32,3 +32,13 @@
 .statBlockGenerator .orange-border.bottom{
 	margin: 15px -10px -20px;
 }
+
+.statBlockGenerator table, 
+.statBlockGenerator th, 
+.statBlockGenerator td {
+	border: none;
+}
+
+.statBlockGenerator p {
+	margin: 0;
+}

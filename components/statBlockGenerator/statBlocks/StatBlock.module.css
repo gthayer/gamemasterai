@@ -32,7 +32,7 @@
 }
 .statBlock h4{
 	color: #7A200D;
-	margin-right: 0.5em;
+	margin: 0 0.5rem 0 0;
 }
 
 .statBlock h4,
@@ -48,6 +48,7 @@
 
 .statBlock li {
 	padding: 0.5em 0;
+	margin-bottom: 0;
 }
 
 .statBlock table {
