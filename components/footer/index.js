@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
 	return (
-		<header className="w-full bg-black text-tan py-2">
+		<footer className="w-full bg-black text-tan py-2">
 			<div className="container lg:flex px-8">
 				<div className="w-full lg:w-6/12 text-center lg:text-left">
 					<strong>GamemasterAI helps GM's create immersive roleplaying game experiences and run campaigns with greater ease and efficiency through the use of AI.</strong>
@@ -24,6 +24,6 @@ export default function Footer() {
 					</span>
 				</div>
 			</div>
-		</header>
+		</footer>
 	)
 }
