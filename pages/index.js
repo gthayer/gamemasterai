@@ -15,7 +15,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <div className="monsterSummoner py-8 px-8 container">
-          <h1 className="text-4xl text-center py-4 text-tan m-2">5e Monster Summoner</h1>
+          <h1 className="text-4xl text-center py-4 text-tan m-2">D&D 5e Monster Summoner</h1>
           <p className="text-center py-4 text-tan">Call upon the eldrich black magic of Artifical Intellegence and summon from the shadows a creature of your darkest desires, birthed from the void, into existance.</p>
           <StatBlockGenerator/>
         </div>
