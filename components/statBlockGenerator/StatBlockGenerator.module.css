@@ -37,6 +37,7 @@
 .statBlockGenerator th, 
 .statBlockGenerator td {
 	border: none;
+	padding: 0;
 }
 
 .statBlockGenerator p {

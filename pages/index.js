@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from '../styles/Home.module.css';
 import StatBlockGenerator from "../components/statBlockGenerator";
 import Header from "../components/header";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
           <StatBlockGenerator/>
         </div>
       </main>
+
+      <Footer/>
     </div>
   );
 }
