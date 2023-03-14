@@ -6,24 +6,24 @@ export default function Header() {
 
 	return (
 		<header className="fixed top-0 w-full bg-black text-tan py-2">
-			<div className="container flex flex-row px-8">
-				<div className="w-8/12">
+			<div className="container flex px-8">
+				<div className="w-7/12 md:w-8/12">
 					<span className="text-lg font-bold">GamemasterAI</span>
 				</div>
-				<div className="w-2/12 text-right">
-				<a href="https://www.reddit.com/r/gamemasterai/" target="_blank">
-					<Image
-						priority
-						className="fill-tan inline-block"
-						src="/images/reddit-icon.svg"
-						height={28}
-						width={28}
-						alt="Join us on Reddit"
-					/>
-				</a>
+				<div className="flex-auto w-1/12 text-right">
+					<a href="https://www.reddit.com/r/gamemasterai/" target="_blank">
+						<Image
+							priority
+							className="fill-tan inline-block"
+							src="/images/reddit-icon.svg"
+							height={28}
+							width={28}
+							alt="Join us on Reddit"
+						/>
+					</a>
 				</div>
 
-				<div className="w-2/12 text-right cursor-pointer">
+				<div className="flex-auto w-3/12 text-right cursor-pointer">
 					{ session ? 
 						<span onClick={() => signOut()}>
 							Sign Out

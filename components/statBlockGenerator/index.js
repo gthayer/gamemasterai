@@ -60,16 +60,20 @@ export default function StatBlockGenerator({monster}) {
 
 	return (
 		<div className={styles.statBlockGenerator}>
-			<div className="flex flex-row m-auto">
-				<div className="basis-1/3 align-middle">
+			<div className="md:flex md:flex-row m-auto my-4">
+				<div className="md:basis-1/3 align-middle">
 
 					{ ! session ? 
 						(
 							<Login />
 						) : (
 							<form 
+								className="my-4 md:m-0"
 								onSubmit={onSubmit}
 								>
+								<div className="md:hidden">
+									<Counter className="text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
+								</div>
 								<Textarea
 									label="describe your creature"
 									name="description-input"
@@ -85,34 +89,34 @@ export default function StatBlockGenerator({monster}) {
 									onChange={(e) => {setSelectedModel(e.target.value)} }
 								/> 
 								*/}
-								<div className="flex flex-row">
-									<Submit className="basis-1/2" value="Conjure" disabled={isDisabled()}/>
-									<Counter className="basis-1/2 text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
+								<div className="md:flex">
+									<Submit className="md:basis-1/2 md:flex-auto" value="Conjure" disabled={isDisabled()}/>
+									<Counter className="hidden md:block md:basis-1/2 md:flex-auto text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
 								</div>
 							</form>
 						)
 					}
 				</div>
-				<div className="basis-2/3">
-				<hr className={styles.orangeBorder} />
-					{ statBlock || isLoading ? (
-						<div>
-							{ currentModel === 'goblin' ? (
-								<StatBlockJson 
-									statBlock={statBlock}
-									isLoading={isLoading}
-								/>
-							) : (
-								<StatBlockMarkdown 
-									statBlock={statBlock}
-									isLoading={isLoading}
-								/>
-							)}
-						</div>
-					) : (
-						<Placeholder/>
-					) }
-				<hr className={styles.orangeBorder} />
+				<div className="md:basis-2/3 md:pl-4">
+					<hr className={styles.orangeBorder} />
+						{ statBlock || isLoading ? (
+							<div>
+								{ currentModel === 'goblin' ? (
+									<StatBlockJson 
+										statBlock={statBlock}
+										isLoading={isLoading}
+									/>
+								) : (
+									<StatBlockMarkdown 
+										statBlock={statBlock}
+										isLoading={isLoading}
+									/>
+								)}
+							</div>
+						) : (
+							<Placeholder/>
+						) }
+					<hr className={styles.orangeBorder} />
 				</div>
 			</div>
 		</div>
