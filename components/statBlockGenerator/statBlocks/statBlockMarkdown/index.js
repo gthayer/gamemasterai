@@ -3,6 +3,7 @@ import markdownStyles from './StatBlockMarkdown.module.css';
 import Timer from "../../timer";
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
+import Ratings from '../../../ratings';
 
 export default function Statblock({statBlock, isLoading}) {
 
@@ -11,8 +12,11 @@ export default function Statblock({statBlock, isLoading}) {
 			<div className={styles.statBlock}>
 				{!isLoading ? (
 				<div className={markdownStyles.styles}>
-					<ReactMarkdown 
-						remarkPlugins={[gfm]}>{statBlock}</ReactMarkdown>
+					<div className="relative">
+						<Ratings/>
+						<ReactMarkdown 
+							remarkPlugins={[gfm]}>{statBlock}</ReactMarkdown>
+					</div>
 				</div>
 				) : (
 					<Timer/>
