@@ -11,13 +11,13 @@ export default function Statblock({statBlock, isLoading}) {
 		<div className="statBlock">
 			<div className={styles.statBlock}>
 				{!isLoading ? (
-				<div className={markdownStyles.styles}>
-					<div className="relative">
+					<div>
 						<Ratings/>
-						<ReactMarkdown 
-							remarkPlugins={[gfm]}>{statBlock}</ReactMarkdown>
+						<div className={markdownStyles.styles}>
+							<ReactMarkdown 
+								remarkPlugins={[gfm]}>{statBlock}</ReactMarkdown>
+						</div>
 					</div>
-				</div>
 				) : (
 					<Timer/>
 				)}
