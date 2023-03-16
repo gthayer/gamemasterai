@@ -4,18 +4,19 @@ import { useState } from 'react';
 
 const endpoint = '/api/rating';
 
-export default function Rating(rating) {
+export default function Rating(statBlockId) {
 
 	const [isLoading, setIsLoading] = useState(false);
 
-	async function rateBlock(event) {
+	async function rateBlock(rating) {
 		setIsLoading(true);
 		const response = await fetch(endpoint, {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify({ 
+			body: JSON.stringify({
+				statBlockId: statBlockId.statBlockId,
 				rating: rating
 			}),
 		});

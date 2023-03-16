@@ -1,14 +1,16 @@
+import {updateRating} from '../../lib/database/statBlock';
+
 export default async function (req, res) {
   
     let result = null;
 
     switch (req.body.rating) {
         case 'like':
-            console.log('like');
+            updateRating(req.body.statBlockId, 'like');
             break;
        
         case 'dislike':
-			console.log('dislike');
+            updateRating(req.body.statBlockId, 'dislike');
             break;
 
 		default:
