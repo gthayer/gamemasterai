@@ -1,12 +1,12 @@
-.ratings p {
+.rating p {
 	margin-bottom: 5px;
-  }
+}
 
-.ratings img {
+.rating img {
   transition: transform 250ms;
 }
 
-.ratings img:hover {
+.rating img:hover {
 	transform: translateY(-5px);
 	cursor: pointer;
 }
