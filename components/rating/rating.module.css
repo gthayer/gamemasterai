@@ -3,10 +3,19 @@
 }
 
 .rating img {
-  transition: transform 250ms;
+	border-radius: 50%;
+	transition: transform 250ms;
 }
 
 .rating img:hover {
 	transform: translateY(-5px);
 	cursor: pointer;
+}
+
+.rating .like {
+	background: #23C552;
+}
+
+.rating .dislike {
+	background: #F84F31;
 }

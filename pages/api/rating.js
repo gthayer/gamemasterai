@@ -6,11 +6,11 @@ export default async function (req, res) {
 
     switch (req.body.rating) {
         case 'like':
-            updateRating(req.body.statBlockId, 'like');
+            result = await updateRating(req.body.id, 'like');
             break;
        
         case 'dislike':
-            updateRating(req.body.statBlockId, 'dislike');
+            result = await updateRating(req.body.id, 'dislike');
             break;
 
 		default:
