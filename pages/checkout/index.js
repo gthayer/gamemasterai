@@ -1,6 +1,6 @@
 import Head from "next/head";
-import styles from '../styles/Home.module.css';
-import CheckoutForm from '../components/checkout/checkoutForm';
+import styles from '../../styles/Home.module.css';
+import CheckoutForm from '../../components/checkout/CheckoutForm';
 
 export default function Checkout() {
   return (
@@ -11,7 +11,7 @@ export default function Checkout() {
       <main className={styles.main}>
         <div className="py-8 px-8">
           <h1 className="text-4xl">Checkout</h1>
-		  <CheckoutForm/>
+		      <CheckoutForm/>
         </div>
       </main>
     </div>

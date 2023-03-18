@@ -1,6 +1,7 @@
 import {productNameToId} from '../../../lib/stripe/stripeHelpers';
 import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
 export default async function (req, res) {
 
 	const productId = productNameToId(req.body.product);
@@ -14,8 +15,8 @@ export default async function (req, res) {
 			},
 		],
 		mode: 'payment',
-		success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-		cancel_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
+		success_url: `${req.headers.origin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+		cancel_url: `${req.headers.origin}/checkout/cancel?session_id={CHECKOUT_SESSION_ID}`,
 	};
 
 	const checkoutSession = await stripe.checkout.sessions.create(params);
