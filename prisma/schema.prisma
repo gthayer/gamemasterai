@@ -32,11 +32,12 @@ model StatBlock {
 
 model Transaction {
   id             Int         @id @default(autoincrement())
-  transactionID  String
+  sessionID      String      @unique
   amount         Decimal     @db.Decimal(9,2)
+  product        String
   createdAt      DateTime    @default(now())
-  userId         String
   user           User        @relation(fields: [userId], references: [id])
+  userId         String
 }
 
 model Account {
