@@ -26,7 +26,7 @@ export default function Header() {
 					</a>
 				</div>
 
-				<div className="flex-auto w-3/12 text-right cursor-pointer">
+				{/* <div className="flex-auto w-3/12 text-right cursor-pointer">
 					{ session ? 
 						<span onClick={() => signOut()}>
 							Sign Out
@@ -36,7 +36,7 @@ export default function Header() {
 							Sign In
 						</span>
 					}
-				</div>
+				</div> */}
 			</div>
 		</header>
 	)
