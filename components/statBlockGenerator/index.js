@@ -70,10 +70,10 @@ export default function StatBlockGenerator({monster}) {
 			<div className="md:flex md:flex-row m-auto my-4">
 				<div className="md:basis-1/3 align-middle">
 
-					{ ! session ? 
+					{/* { ! session ? 
 						(
 							<Login />
-						) : (
+						) : ( */}
 							<form 
 								className="my-4 md:m-0"
 								onSubmit={onSubmit}
@@ -103,8 +103,8 @@ export default function StatBlockGenerator({monster}) {
 									<Counter className="hidden md:block md:basis-1/2 md:flex-auto text-right" count={descriptionInput.length} max={maxDescriptionLength}/>
 								</div>
 							</form>
-						)
-					}
+						{/* )
+					} */}
 				</div>
 				<div className="md:basis-2/3 md:pl-4">
 					<hr className={styles.orangeBorder} />
