@@ -25,6 +25,7 @@ model StatBlock {
   createdAt      DateTime   @default(now())
   rating         String
   model          String
+  userId         String
 }
 
 model Transaction {
@@ -64,7 +65,7 @@ model Session {
 }
 
 model VerificationToken {
-  id           String   @id @default(cuid())
+  id         String   @id @default(cuid())
   identifier String
   token      String   @unique
   expires    DateTime
