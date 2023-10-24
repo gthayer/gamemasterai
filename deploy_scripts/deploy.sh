@@ -1,2 +1,2 @@
-npx prisma generate
+# npx prisma generate
 next build
